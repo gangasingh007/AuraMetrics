@@ -100,7 +100,7 @@ export const PricingSection = () => {
                   <p className="text-muted-foreground">Deeper insights & unlimited chat</p>
                 </div>
 
-                <Button className="w-full py-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 text-primary-foreground rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button className="w-full text-black font-bold py-3 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85  rounded-xl  shadow-lg hover:shadow-xl transition-all duration-300">
                   Start Plus Plan
                 </Button>
 
