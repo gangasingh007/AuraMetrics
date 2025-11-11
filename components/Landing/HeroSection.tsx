@@ -1,7 +1,7 @@
 import { SignUpButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import { Button } from '../ui/button';
-import { CalendarIcon, MicIcon, StarIcon } from 'lucide-react';
+import { CalendarIcon, MessageCircleIcon, MicIcon, StarIcon } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -25,7 +25,7 @@ const HeroSection = () => {
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20 backdrop-blur-sm">
                   <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium text-primary">
-                    AI-Powered Dental Assistant
+                    AI-Powered Mental Health Assistant
                   </span>
                 </div>
 
@@ -46,8 +46,8 @@ const HeroSection = () => {
 
                 {/* SUBTITLE */}
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-xl font-medium">
-                  Chat with our AI dental assistant for instant advice, book smart appointments, and
-                  get personalized care recommendations. Available 24/7.
+                  Chat with our AI companion for instant support, access guided exercises, and
+                  receive personalized insights into your well-being. Available 24/7.
                 </p>
               </div>
 
@@ -62,8 +62,8 @@ const HeroSection = () => {
 
                 <SignUpButton mode="modal">
                   <Button size={"lg"} variant={"outline"}>
-                    <CalendarIcon className="mr-2 size-5" />
-                    Book appointment
+                    <MessageCircleIcon className="mr-2 size-5" />
+                    Start a conversation
                   </Button>
                 </SignUpButton>
               </div>
@@ -122,7 +122,7 @@ const HeroSection = () => {
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Trusted by{" "}
-                      <span className="font-semibold text-foreground">1,200+ patients</span>
+                      <span className="font-semibold text-foreground">1,200+ users</span>
                     </p>
                   </div>
                 </div>
@@ -136,8 +136,8 @@ const HeroSection = () => {
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl rotate-45 blur-xl"></div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl"></div>
               <Image
-                src={"/hero.png"}
-                alt="DentWise AI"
+                src="/hero.png"
+                alt="AuraMetrics AI Interface"
                 width={300}
                 height={300}
                 className="w-md h-auto"
