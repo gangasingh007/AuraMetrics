@@ -1,15 +1,103 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  output   = "../generated/prisma-client"
 }
+
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String             @id @default(cuid())
+  clerkId            String             @unique
+  email              String             @unique
+  firstName          String?
+  lastName           String?
+  phone              String?
+  password           String
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  appointments       Appointment[]
+  chats              Chat[] 
+  
+  @@map("users")
+
+}
+
+model Doctor{
+  id                String            @id @default(cuid())
+  name              String
+  email             String            @unique
+  phone             String?
+  specialty         String
+  bio               String?
+  gender            Gender
+  imageUrl          String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  appointments      Appointment[]
+  
+  @@map("doctors")
+}
+
+enum Gender{
+  MALE
+  FEMALE
+  OTHER
+}
+
+
+model Appointment {
+  id                  String              @id @default(cuid())
+  userId              String
+  time                String 
+  doctorId            String
+  scheduledAt         DateTime
+  reason              String?
+  status              AppointmentStatus   @default(CONFIRMED)
+  notes               String?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  user                User                @relation(fields: [userId], references: [id],onDelete: Cascade)
+  doctor              Doctor              @relation(fields: [doctorId], references: [id],onDelete: Cascade)
+  
+  @@map("appointments")
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELED
+}
+
+model Chat {
+  id           String       @id @default(cuid())
+  title        String       @default("New Chat") // A title for the chat, e.g., "Trip to Paris"
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  userId       String 
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages     Message[]
+}
+
+
+model Message {
+  id           String       @id @default(cuid())
+  content      String       @db.Text 
+  sender       String   
+  createdAt    DateTime     @default(now())
+  role         MessageRole
+  chatId       String
+  chat         Chat         @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@index([chatId])
+}
+
+enum MessageRole {
+  USER
+  AI
 }

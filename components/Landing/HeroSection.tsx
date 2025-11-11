@@ -1,7 +1,7 @@
 import { SignUpButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import { Button } from '../ui/button';
-import { CalendarIcon, MessageCircleIcon, MicIcon, StarIcon } from 'lucide-react';
+import { CalendarIcon, MicIcon, StarIcon } from 'lucide-react';
 
 
 const HeroSection = () => {
