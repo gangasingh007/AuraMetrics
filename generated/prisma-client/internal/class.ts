@@ -23,7 +23,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "C:\\Users\\Asus\\OneDrive\\Desktop\\codes\\Projects\\aurametrics\\generated\\prisma-client",
+      "value": "C:\\Users\\Asus\\OneDrive\\Desktop\\codes\\Projects\\aura\\generated\\prisma-client",
       "fromEnvVar": null
     },
     "config": {
@@ -37,7 +37,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Asus\\OneDrive\\Desktop\\codes\\Projects\\aurametrics\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Asus\\OneDrive\\Desktop\\codes\\Projects\\aura\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../prisma",
