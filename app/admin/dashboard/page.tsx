@@ -2,10 +2,22 @@
 
 import { useUser } from "@clerk/nextjs";
 import { SettingsIcon } from "lucide-react"
+import AdminStats from "@/components/Admin/AdminStats";
+import useDoctors from "@/hooks/use-doctors";
  
  function DashBoardPage() {
   const user = useUser().user;
-   return (
+  const { data: doctors = [], isLoading: doctorsLoading } = useDoctors();
+  const {data: appointments = [], isLoading: appointmentsLoading} = useDoctors(); 
+
+  const stats = {
+    totalDoctors: doctors.length,
+    activeDoctors: doctors.filter((doc: any) => doc.isActive).length,
+    totalAppointments: appointments.length,
+    completedAppointments: appointments.filter((appt: any) => appt.status === 'completed').length,
+  }
+  
+  return (
     <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
       {/* Welcome back name */}
         <div className="mb-12 flex items-center justify-between bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-3xl p-8 border border-primary/20">
@@ -30,6 +42,7 @@ import { SettingsIcon } from "lucide-react"
             </div>
           </div>
         </div>
+        <AdminStats totalDoctors={stats.totalDoctors} totalAppointments={stats.totalAppointments} activeDoctors={stats.activeDoctors} completedAppointments={stats.completedAppointments}/>
     </div>
   )
 }
