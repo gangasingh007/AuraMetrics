@@ -9,8 +9,15 @@ import { redirect } from 'next/navigation'
 
 const Landing = async  () => {
   const user = await currentUser()
+
+  const adminEmail = process.env.ADMIN_EMAIL;
+
+  if(user?.emailAddresses[0].emailAddress === adminEmail){
+    redirect("/admin/dashboard")
+  }
+
   if(user){
-    redirect("/chat")
+    redirect("/dashboard")
   }
 
   return (
