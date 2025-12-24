@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { SettingsIcon } from "lucide-react"
 import AdminStats from "@/components/Admin/AdminStats";
 import useDoctors from "@/hooks/use-doctors";
+import DocManagement from "@/components/Admin/DocManagement";
  
  function DashBoardPage() {
   const user = useUser().user;
@@ -42,7 +43,11 @@ import useDoctors from "@/hooks/use-doctors";
             </div>
           </div>
         </div>
+        {/*admin stats cards  */}
         <AdminStats totalDoctors={stats.totalDoctors} totalAppointments={stats.totalAppointments} activeDoctors={stats.activeDoctors} completedAppointments={stats.completedAppointments}/>
+    
+        {/* Doctors Management */}
+        <DocManagement />
     </div>
   )
 }
